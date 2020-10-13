@@ -104,7 +104,7 @@ var md5 = (function md5init() {
   }
 
   function md51(s) {
-      txt = '';
+      window.txt = '';
       var n = s.length,
           state = [1732584193, -271733879, -1732584194, 271733878],
           i;
