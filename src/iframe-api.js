@@ -19,7 +19,7 @@ function toStrings() {
 var iframeApi = function iframeApi(myApi, userOptions) {
   var params = {
     myApi: myApi,
-    options: userOptions || {}
+    options: userOptions || { debug: false }
   };
   params.options.isIframed = isIframed();
 
@@ -75,7 +75,9 @@ var iframeApi = function iframeApi(myApi, userOptions) {
 
     function respondToMail(envelope, port) {
       var letter = selfAddressed(envelope);
-      console.log('responding to letter', JSON.stringify(letter));
+      if (params.options.debug){
+        console.log('responding to letter', JSON.stringify(letter));
+      }
       var result = callApiMethod(letter);
       if (isPromise(result)) {
         result.then(function (value) {
